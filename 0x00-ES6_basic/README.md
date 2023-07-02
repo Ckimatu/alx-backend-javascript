@@ -27,7 +27,8 @@ Modify
 
 - function taskFirst to instantiate variables using const
 - function taskNext to instantiate variables using let
-```Javascipt
+  
+```Javascript
 export function taskFirst() {
   var task = 'I prefer const when I can.';
   return task;
@@ -45,19 +46,35 @@ export function taskNext() {
 }
 ```
 
-Execution example:
+## 2.Arrow functions
+Rewrite the following standard function to use ES6’s arrow syntax of the function add (it will be an anonymous function after)
 
-bob@dylan:~$ cat 0-main.js
-```Javascript
-import { taskFirst, taskNext } from './0-constants.js';
+```JavaScript
+export default function getNeighborhoodsList() {
+  this.sanFranciscoNeighborhoods = ['SOMA', 'Union Square'];
 
-console.log(`${taskFirst()} ${taskNext()}`);
+  const self = this;
+  this.addNeighborhood = function add(newNeighborhood) {
+    self.sanFranciscoNeighborhoods.push(newNeighborhood);
+    return self.sanFranciscoNeighborhoods;
+  };
+}
 ```
 
-bob@dylan:~$
+## 3. Parameter defaults
+Condense the internals of the following function to 1 line - without changing the name of each function/variable.
 
-bob@dylan:~$ npm run dev 0-main.js
+*Hint: The key here to define default parameter values for the function parameters.*
 
-I prefer const when I can. But sometimes let is okay
+```JavaScript
+export default function getSumOfHoods(initialNumber, expansion1989, expansion2019) {
+  if (expansion1989 === undefined) {
+    expansion1989 = 89;
+  }
 
-bob@dylan:~$ 
+  if (expansion2019 === undefined) {
+    expansion2019 = 19;
+  }
+  return initialNumber + expansion1989 + expansion2019;
+}
+```
